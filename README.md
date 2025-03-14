@@ -5,11 +5,36 @@ with necessary modifications to support Ergo.
 
 
 # Requirements
-* Node v10+ (tested with v12+) 
+* Node v16 (tested with v16) 
 * Ergo node
   - fully synced
   - wallet initialized and unlocked
   - mining = true in node's config
+  - example config:
+  ```bash
+  ergo {
+    node {
+      mining = true
+    }
+    chain {
+      reemission {
+        checkReemissionRules = true
+      }
+    }
+    wallet {
+      checkEIP27 = true
+    }
+  }
+  scorex {
+    restApi {
+      apiKeyHash = "8302e9c2fcd9cd4f5b3286806870fa1f231152adec154ac6615aae57700adf8b"
+    }
+  }
+  network {
+    maxConnections = 10
+    nodeName = "serverstack-node"
+  }
+  ```
 
 
 # Simple Usage

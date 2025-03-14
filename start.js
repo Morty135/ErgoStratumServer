@@ -20,19 +20,14 @@ var pool = Stratum.createPool({
     "coin": myCoin,
     "extraNonce1Size": 1,
 
-    "address": "9fs2EgK8MD8ALEEjsE9oVFjexZdYFQoQWxBTPnxCdsU6ubxVLqX", //Address to where block rewards are given
+    "address": "9fzKQdyrJdNzSwD62uaAS7pTteckPwz2SiQvRE7nJGfcAh8rHfw", //Address to where block rewards are given
 
     /* Block rewards go to the configured pool wallet address to later be paid out to miners,
        except for a percentage that can go to, for examples, pool operator(s) as pool fees or
        or to donations address. Addresses or hashed public keys can be used. Here is an example
        of rewards going to the main pool op, a pool co-owner, and NOMP donation. */
     "rewardRecipients": {
-        "n37vuNFkXfk15uFnGoVyHZ6PYQxppD3QqK": 1.5, //1.5% goes to pool op
-        "mirj3LtZxbSTharhtXvotqtJXUY7ki5qfx": 0.5, //0.5% goes to a pool co-owner
-
-        /* 0.1% donation to NOMP. This pubkey can accept any type of coin, please leave this in
-           your config to help support NOMP development. */
-        "22851477d63a085dbc2398c8430af1c09e7343f6": 0.1
+        "9hLQzpYS6PEmgRYDyV6tVMXTavFSFAgFHhPR1oJZZsyPNNVaPa6": 0.5
     },
 
     "blockRefreshInterval": 1000, //How often to poll RPC daemons for new blocks, in milliseconds
@@ -74,7 +69,7 @@ var pool = Stratum.createPool({
        be configured to use its own pool difficulty and variable difficulty settings. varDiff is
        optional and will only be used for the ports you configure it for. */
     "ports": {
-        "3032": { //A port for your miners to connect to
+        "3333": { //A port for your miners to connect to
             "diff": 4000000, //the pool difficulty for this port
             /*
             * use this parameter to multiply difficulty to b for each request.
@@ -93,7 +88,7 @@ var pool = Stratum.createPool({
                 "variancePercent": 30 //Allow time to very this % from target without retargeting
             }
         },
-        "3256": { //Another port for your miners to connect to, this port does not use varDiff
+        "3332": { //Another port for your miners to connect to, this port does not use varDiff
             "diff": 256 //The pool difficulty
         }
     },
@@ -107,33 +102,12 @@ var pool = Stratum.createPool({
           - https://en.bitcoin.it/wiki/Running_bitcoind */
     "daemons": [
         {   //Main daemon instance
-            "host": "213.239.193.208",
+            "host": "192.168.1.116",
             "port": 9053,
-            "user": "litecoinrpc",
-            "password": "testnet"
+            "user": "",
+            "password": ""
         }
-    ],
-
-
-    /* This allows the pool to connect to the daemon as a node peer to receive block updates.
-       It may be the most efficient way to get block updates (faster than polling, less
-       intensive than blocknotify script). It requires the additional field "peerMagic" in
-       the coin config. */
-    "p2p": {
-        "enabled": false,
-
-        /* Host for daemon */
-        "host": "127.0.0.1",
-
-        /* Port configured for daemon (this is the actual peer port not RPC port) */
-        "port": 19333,
-
-        /* If your coin daemon is new enough (i.e. not a shitcoin) then it will support a p2p
-           feature that prevents the daemon from spamming our peer node with unnecessary
-           transaction data. Assume its supported but if you have problems try disabling it. */
-        "disableTransactions": true
-
-    }
+    ]
 
 }, function(ip, port , workerName, password, callback){ //stratum authorization function
     console.log("Authorize " + workerName + ":" + password + "@" + ip);
