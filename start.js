@@ -107,28 +107,7 @@ var pool = Stratum.createPool({
             "user": "",
             "password": ""
         }
-    ],
-
-
-    /* This allows the pool to connect to the daemon as a node peer to receive block updates.
-       It may be the most efficient way to get block updates (faster than polling, less
-       intensive than blocknotify script). It requires the additional field "peerMagic" in
-       the coin config. */
-    "p2p": {
-        "enabled": false,
-
-        /* Host for daemon */
-        "host": "192.168.1.116",
-
-        /* Port configured for daemon (this is the actual peer port not RPC port) */
-        "port": 19333,
-
-        /* If your coin daemon is new enough (i.e. not a shitcoin) then it will support a p2p
-           feature that prevents the daemon from spamming our peer node with unnecessary
-           transaction data. Assume its supported but if you have problems try disabling it. */
-        "disableTransactions": true
-
-    }
+    ]
 
 }, function(ip, port , workerName, password, callback){ //stratum authorization function
     console.log("Authorize " + workerName + ":" + password + "@" + ip);
