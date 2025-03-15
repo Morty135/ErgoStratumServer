@@ -29,7 +29,6 @@
     },
     "dependencies": {
         "async": "*",
-        "base58-native": "*",
         "bigint-buffer": "^1.1.5",
         "bignum": "0.13.1",
         "blake2": "^4.0.2",

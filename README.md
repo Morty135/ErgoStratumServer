@@ -5,7 +5,7 @@ with necessary modifications to support Ergo.
 
 
 # Requirements
-* Node v16 (tested with v16) 
+* Node v16-v18
 * Ergo node
   - fully synced
   - wallet initialized and unlocked
