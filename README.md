@@ -42,7 +42,7 @@ with necessary modifications to support Ergo.
 - Clone project
 
   ```bash
-  git clone https://github.com/mhssamadani/ErgoStratumServer.git
+  git clone https://github.com/Morty135/ErgoStratumServer.git
   npm update
   ```
 - Update start.js file and set node address
